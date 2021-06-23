@@ -43,8 +43,8 @@ function Row(props) {
                                     {row.sido}
                             </TableCell>
                             <TableCell align="right">{row.centerName}</TableCell>
-                            <TableCell align="right">{row.centerType}</TableCell>
-                            <TableCell align="right">{row.facilityName}</TableCell>
+                            <TableCell align="right">{row.org}</TableCell>
+                            <TableCell align="right">{row.sigungu}</TableCell>
                             <TableCell align="right">{row.phoneNumber}</TableCell>
                     </TableRow>
                     <TableRow>
@@ -52,23 +52,23 @@ function Row(props) {
                                     <Collapse in={open} timeout="auto" unmountOnExit>
                                             <Box margin={1}>
                                                     <Typography variant="h6" gutterBottom component="div">
-                                                            History
+                                                            상세정보
                                                     </Typography>
                                                     <Table size="small" aria-label="purchases">
                                                             <TableHead>
                                                                     <TableRow>
-                                                                            <TableCell>Date</TableCell>
-                                                                            <TableCell>Customer</TableCell>
-                                                                            <TableCell align="right">Amount</TableCell>
-                                                                            <TableCell align="right">Total price ($)</TableCell>
+                                                                            <TableCell align="right">센터유형</TableCell>
+                                                                            <TableCell align="right">센터명</TableCell>
+                                                                            <TableCell align="right">주소</TableCell>
+                                                                            <TableCell align="right">마지막 업데이트</TableCell>
                                                                     </TableRow>
                                                             </TableHead>
                                                             <TableBody>
                                                                     <TableRow>
-                                                                            <TableCell align="right">{row.sido}</TableCell>
-                                                                            <TableCell align="right">{row.sido}</TableCell>
-                                                                            <TableCell align="right">{row.sido}</TableCell>
-                                                                            <TableCell align="right">{row.sido}</TableCell>
+                                                                            <TableCell align="right">{row.centerType}</TableCell>
+                                                                            <TableCell align="right">{row.facilityName}</TableCell>
+                                                                            <TableCell align="right">{row.address}</TableCell>
+                                                                            <TableCell align="right">{row.updatedAt}</TableCell>
                                                                     </TableRow>
                                                             </TableBody>
                                                     </Table>
@@ -95,10 +95,10 @@ function Hospital(data){
                             <TableHead>
                                     <TableRow>
                                             <TableCell />
-                                            <TableCell>시설명</TableCell>
+                                            <TableCell align="right">지역</TableCell>
                                             <TableCell align="right">센터명</TableCell>
-                                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                                            <TableCell align="right">시설명</TableCell>
+                                            <TableCell align="right">운영기관</TableCell>
+                                            <TableCell align="right">시군구</TableCell>
                                             <TableCell align="right">연락처</TableCell>
                                     </TableRow>
                             </TableHead>
