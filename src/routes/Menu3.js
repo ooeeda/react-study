@@ -17,11 +17,13 @@ class Menu3 extends React.Component{
     componentDidMount(){
         this.getData();
     };
+
     render(){
+
         const {isLoading, data} = this.state;
-        console.log(data);
+
         return (
-            <scction className="container">
+            <section className="container">
                 {
                     isLoading ? (
                     <div className="loader">
@@ -29,26 +31,10 @@ class Menu3 extends React.Component{
                     </div>
                     ):(
                     <div className="">
-                        {data.map(hospital => (
-                         <Hospital
-                             address = {hospital.address}
-                             centerName = {hospital.centerName}
-                             centerType = {hospital.centerType}
-                             createdAt = {hospital.createdAt}
-                             facilityName = {hospital.facilityName}
-                             id = {hospital.id}
-                             lat = {hospital.lat}
-                             lng = {hospital.lng}
-                             org = {hospital.org}
-                             phoneNumber = {hospital.phoneNumber}
-                             sido = {hospital.sido}
-                             updatedAt = {hospital.updatedAt}
-                             zipCode = {hospital.zipCode}
-                         />
-                        ))}
+                        <Hospital data={data}/>
                      </div>
                     )}
-            </scction>
+            </section>
         );
     }
 }
