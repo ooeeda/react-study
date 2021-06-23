@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import TablePagination from '@material-ui/core/TablePagination';
 
 
 const useRowStyles = makeStyles({
@@ -80,12 +81,23 @@ function Row(props) {
         );
 }
 
-function Hospital(data){
+function Hospital(state){
         //console.log({address, centerName,centerType,createdAt,facilityName,id,lat,lng,org,phoneNumber,sido,updatedAt,zipCode});
         //console.log(data);
         //const rows = data.map( x=> (x.address,x.centerName,x.centerType,x.createdAt,x.facilityName,x.id,x.lat,x.lng,x.org,x.phoneNumber,x.sido,x.updatedAt,x.zipCode));
-        const rows = data.data;
+        const {data, totalCount, page:dataPage, perPage} = state.data;
+        //console.log(state.data);
+        console.log(React.useState(10));
+        const [rowsPerPage, setRowsPerPage] = React.useState(0);
 
+        const [page, setPage] = React.useState(0);
+        const handleChangePage = (event, newPage) => {
+                setPage(newPage);
+        };
+        const handleChangeRowsPerPage = (event) => {
+                setRowsPerPage(+event.target.value);
+                setPage(0);
+        };
         return(
 
 
@@ -103,11 +115,20 @@ function Hospital(data){
                                     </TableRow>
                             </TableHead>
                             <TableBody>
-                                   {rows.map(row => (
+                                   {data.map(row => (
                                     <Row key={row.id} row={row} />
                                 ))}
                             </TableBody>
                     </Table>
+                    <TablePagination
+                        rowsPerPageOptions={[10, 25, 100]}
+                        component="div"
+                        count={totalCount}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onChangePage={handleChangePage}
+                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                    />
             </TableContainer>
         );
 }
